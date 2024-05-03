@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('GOMY7.jpg') center/cover fixed no-repeat; /* Replace 'background-image.jpg' with your actual image path */
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Add animation for header text */
+        h1 {
+            animation: fadeInDown 1.5s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        nav {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+        }
+
+        section {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            margin: 10px;
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: #000000;
+        }
+
+        /* Add styles for social icons */
+        .social-icons img {
+            width: 40px;
+            height: 40px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        /* Hide WhatsApp link */
+        #whatsapp-link {
+            display: none;
+        }
+
+        /* Contact form styles */
+        #contact-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+            margin: auto;
+        }
+
+        #contact-form label {
+            margin-bottom: 8px;
+        }
+
+        #contact-form input, #contact-form textarea {
+            margin-bottom: 16px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #contact-form button {
+            padding: 10px;
+            background-color: #000000;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #000000;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Add space for the logo */
+        #logo {
+            text-align: center;
+            margin: 20px;
+        }
+
+        #logo img {
+            width: 100px; /* Adjust the width as needed */
+        }
+    </style>
+    <title>Gomy Tech</title>
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <!-- Insert your logo here -->
+            <img src="logo.jpg" alt=/>
+
+        </div>
+        <h1>GOMY TECH</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+     <img src='logo.jpg' alt=
+   'image' height='250px'
+   'image' width='850px'>
+   >
+
+        <h2>Welcome to Our Tech Blog!</h2>
+        <p>WE ARE DEDICATED IN GIVING YOU THE BEST SERVICES AND UPDATE AOUT TECHNOLOGY</p>
+        
+        <div>
+            <img src='GOMY8.jpg' alt=
+   'image' height='250px'
+   'image' width='850px'>
+            <h3>Post Title 2</h3>
+            <p>Post content goes here...</p>
+        </div>
+        <div>
+            <img src='GOMY9.jpg' alt=
+   'image' height='150px'
+   'image' width='850px'>
+            <h3>Post Title 3</h3>
+            <p>Post content goes here...</p>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>We are passionate about technology and strive to provide quality courses and services to empower individuals in the tech world.</p>
+        <p>Our team at Gomy Tech is dedicated to exploring and sharing the latest advancements in technology.</p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Fill out the form below to get in touch with us:</p>
+        <form id="contact-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <p>Alternatively, you can reach us at:</p>
+        <p>Phone: 0916 672 4452</p>
+        <p id="whatsapp-link">WhatsApp: <a href="https://wa.link/61cjx5">https://wa.link/61cjx5</a></p>
+    </section>
+
+    <footer>
+        <p>We are proud partners with GitHub, Samorabot, YOUTUBE ,FACEBOOK, and others.</p>
+        <p>Contact us via email: <a href="mailto:gomy5787@gmail.com">gomy5787@gmail.com</a>     
+		            Contact us via WHATAPP: <a href="https://wa.link/rmltrz">WHATAPP US</a></p>
+    </footer>
+            
+
+    </footer>
+
+    <script>
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Form submitted successfully!');
+        });
+    </script>
+    <!-- Begin of Chaport Live Chat code --> <script type="text/javascript"> (function(w,d,v3){ w.chaportConfig = { appId : '656ea50ec2a9d875ac0c0daf' }; if(w.chaport)return;v3=w.chaport={};v3._q=[];v3._l={};v3.q=function(){v3._q.push(arguments)};v3.on=function(e,fn){if(!v3._l[e])v3._l[e]=[];v3._l[e].push(fn)};var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://app.chaport.com/javascripts/insert.js';var ss=d.getElementsByTagName('script')[0];ss.parentNode.insertBefore(s,ss)})(window, document); </script> <!-- End of Chaport Live Chat code -->
+</body>
+</html>
