@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gomy Tech Chat Bot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .chat-container {
+            max-width: 500px;
+            margin: 50px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .bot-name {
+            font-weight: bold;
+        }
+
+        .chat-messages {
+            padding: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .message {
+            margin-bottom: 10px;
+        }
+
+        .bot {
+            text-align: left;
+        }
+
+        .user-input {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 8px 15px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        .typing {
+            font-style: italic;
+        }
+
+        .qa-section {
+            padding: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .qa-item {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="chat-container" class="chat-container">
+        <div class="header">
+            <img src="chat.jpg" alt="Chat Bot Icon" class="profile-img">
+            <p class="bot-name">AS-SOLAT LEGAL CONSULT</p>
+        </div>
+        <div id="chat-messages" class="chat-messages">
+            <div class="message bot">
+                <p class="typing">AS SOLAT LEGAL CONSULT...</p>
+            </div>
+        </div>
+        <div class="user-input">
+            <input type="text" id="user-input" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+  
+    <script>
+        function sendMessage() {
+            const userInput = document.getElementById('user-input');
+            const chatMessages = document.getElementById('chat-messages');
+
+           
+            const userMessage = userInput.value.trim();
+
+          
+            userInput.value = '';
+
+            const userDiv = document.createElement('div');
+            userDiv.className = 'message';
+            userDiv.innerHTML = `<p>${userMessage}</p>`;
+            chatMessages.appendChild(userDiv);
+
+   
+            simulateTyping();
+
+            setTimeout(() => {
+                const botDiv = document.createElement('div');
+                botDiv.className = 'message bot';
+                
+               
+                let botMessage;
+                if (userMessage.toLowerCase().includes('hi')) {
+                    botMessage = 'Hello! Welcome to AS SOLAT LEGAL CONSULT. How can I help you?';
+                } else if (userMessage.toLowerCase().includes('contact support')) {
+                    botMessage = 'You can contact us at 09166724452 or email us at gomytech1@gmail.com.';
+                } else if (userMessage.toLowerCase().includes('schedule appointment')) {
+                    botMessage = 'To schedule an appointment, to schedulde appointmen go the main mage and chose schedulde appointment or go to www.asolatlegalconsusult/scheduldeappointment.com';
+                } else if (userMessage.toLowerCase().includes('what types of legal cases do you handle?')) {
+                    botMessage = 'We handle various types of legal cases, including personal injury, contract disputes, family law, and more.';
+                } else if (userMessage.toLowerCase().includes('do you have experience with similar cases to mine?')) {
+                    botMessage = 'We strive to have experience with a wide range of cases. Please provide more details about your case for a better response.';
+                } else if (userMessage.toLowerCase().includes('what are your qualifications and experience?')) {
+                    botMessage = 'Our team holds advanced qualifications, including an LLM and bar admissions, with over 15 years of experience.';
+                } else if (userMessage.toLowerCase().includes('how long will my case take?')) {
+                    botMessage = 'The duration of your case depends on its complexity. We can provide a more accurate estimate after reviewing the details.';
+                } else {
+                    botMessage = 'I\'m sorry, I didn\'t understand that. Please contact us at 09166724452 for more assistance.';
+                }
+
+                botDiv.innerHTML = `<p>${botMessage}</p>`;
+                chatMessages.appendChild(botDiv);
+
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 1500);
+        }
+
+        function simulateTyping() {
+            const chatMessages = document.getElementById('chat-messages');
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message bot';
+            typingDiv.innerHTML = '<p class="typing">Gomy Tech is typing...</p>';
+            chatMessages.appendChild(typingDiv);
+
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            setTimeout(() => {
+                typingDiv.remove();
+            }, 1000);
+        }
+    </script>
+
+</body>
+</html>
