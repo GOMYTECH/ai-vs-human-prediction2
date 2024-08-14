@@ -178,7 +178,7 @@
 
             infoForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                if (infoList.length < 50) {
+                if (infoList.length < 3000000) {
                     const newInfo = {
                         name: e.target.name.value,
                         amount: e.target.amount.value,
