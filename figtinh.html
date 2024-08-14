@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Betting</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            background-color: #000;
+        }
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        .header .logo {
+            max-width: 200px; /* Maximum width of the logo */
+            height: auto;     /* Maintain aspect ratio */
+            display: inline-block; /* Center the image */
+            margin: 0 auto;   /* Center horizontally */
+            border: 2px solid #fff; /* White border */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Shadow effect */
+        }
+        @media (max-width: 768px) {
+            .header .logo {
+                max-width: 150px; /* Adjust size for smaller screens */
+            }
+        }
+        .content {
+            padding: 80px 20px 20px; /* Adjust padding to account for header */
+        }
+        .bets-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .bets-list li {
+            background: rgba(0, 0, 0, 0.5);
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .bets-list li:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+        .bets-list a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+
+      <center>  <img src="download.jpg" alt="Football Betting Logo" class="logo"> </center>
+    
+
+    <!-- Main Content -->
+    <div class="content">
+        <h1>fightting Betting List</h1>
+        <ul class="bets-list">
+            <li><a href="bet-page1.html">Match 1: ai(real madrid) vs human(manu)</a></li>
+            <li><a href="bet-page2.html"> ai(real madrid) vs human(manu)</a></li>
+            <li><a href="bet-page3.html"> ai(real madrid) vs human(manu)</a></li>
+            <li><a href="bet-page1.html">Match 1: ai(real madrid) vs human(manu)</a></li>
+            <li><a href="bet-page2.html"> ai(real madrid) vs human(manu)</a></li>
+            <li><a href="bet-page3.html"> ai(real madrid) vs human(manu)</a></li>
+            <li><a href="bet-page1.html">Match 1: ai(real madrid) vs human(manu)</a></li>
+            <li><a href="bet-page2.html"> ai(real madrid) vs human(manu)</a></li>
+            <li><a href="bet-page3.html"> ai(real madrid) vs human(manu)</a></li>
+            <li><a href="bet-page1.html">Match 1: ai(real madrid) vs human(manu)</a></li>
+            
+            <!-- Add more bets as needed -->
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 Football Betting. All rights reserved.</p>
+    </div>
+</body>
+</html>

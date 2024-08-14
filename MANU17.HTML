@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+        }
+
+        button {
+            background-color: black;
+            color: white;
+            border: 1px solid white;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            background-color: #222;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        #infoDisplay {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .info-item {
+            background-color: #333;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .info-item button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+   <h1> MAKE PAYMENT BEFORE FELLING THE INFO<a href="PAYMENT.HTML">PAYMENT PAGE</a></h1>
+    <header>
+        <button id="searchButton">Name Search</button>
+    </header>
+
+    <main>
+        <div class="container">
+            <form id="infoForm">
+                <div class="input-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="input-group">
+                    <label for="amount">Amount:</label>
+                    <input type="number" id="amount" name="amount" required>
+                </div>
+                <div class="input-group">
+                    <label for="account">Account:</label>
+                    <input type="text" id="account" name="account" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <button type="submit" id="submitButton">Submit</button>
+            </form>
+            <div id="infoDisplay"></div>
+        </div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const infoForm = document.getElementById('infoForm');
+            const infoDisplay = document.getElementById('infoDisplay');
+            const searchButton = document.getElementById('searchButton');
+            const passwordDelete = '1425'; // Correct password for delete
+            const passwordAccept = '142512'; // Password for accepting
+            let infoList = JSON.parse(localStorage.getItem('infoList')) || [];
+
+            function updateDisplay() {
+                infoDisplay.innerHTML = '';
+                infoList.forEach((info, index) => {
+                    const infoItem = document.createElement('div');
+                    infoItem.className = 'info-item';
+                    infoItem.innerHTML = `
+                        <p>Name: ${info.name}</p>
+                        <p>Amount: ${info.amount}</p>
+                        <p>Account: ${info.account}</p>
+                        <p>Email: ${info.email}</p>
+                        <button class="deleteButton" data-index="${index}">Delete</button>
+                        <button class="acceptButton" data-index="${index}">Accept</button>
+                        <input type="password" id="password${index}" placeholder="Enter password">
+                    `;
+                    infoDisplay.appendChild(infoItem);
+                });
+
+                // Attach event listeners to buttons
+                document.querySelectorAll('.deleteButton').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const index = e.target.dataset.index;
+                        deleteInfo(index);
+                    });
+                });
+
+                document.querySelectorAll('.acceptButton').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const index = e.target.dataset.index;
+                        acceptInfo(index);
+                    });
+                });
+            }
+
+            function deleteInfo(index) {
+                const passwordInput = document.getElementById(`password${index}`);
+                if (passwordInput.value === passwordDelete) {
+                    infoList.splice(index, 1);
+                    localStorage.setItem('infoList', JSON.stringify(infoList));
+                    updateDisplay();
+                } else {
+                    alert('Incorrect password!');
+                }
+            }
+
+            function acceptInfo(index) {
+                const passwordInput = document.getElementById(`password${index}`);
+                if (passwordInput.value === passwordAccept) {
+                    infoList[index].accepted = true;
+                    localStorage.setItem('infoList', JSON.stringify(infoList));
+                    updateDisplay();
+                } else {
+                    alert('Incorrect password!');
+                }
+            }
+
+            function searchInfo() {
+                const name = prompt("Enter the name to search:");
+                const foundInfo = infoList.filter(info => info.name.toLowerCase() === name.toLowerCase());
+                if (foundInfo.length > 0) {
+                    alert("Found: " + foundInfo.map(info => `Name: ${info.name}, Amount: ${info.amount}, Account: ${info.account}, Email: ${info.email}`).join('\n'));
+                } else {
+                    alert("No information found.");
+                }
+            }
+
+            infoForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                if (infoList.length < 50) {
+                    const newInfo = {
+                        name: e.target.name.value,
+                        amount: e.target.amount.value,
+                        account: e.target.account.value,
+                        email: e.target.email.value,
+                        accepted: false
+                    };
+                    infoList.push(newInfo);
+                    localStorage.setItem('infoList', JSON.stringify(infoList));
+                    updateDisplay();
+                    e.target.reset();
+                } else {
+                    alert('Registration limit reached.');
+                }
+            });
+
+            searchButton.addEventListener('click', searchInfo);
+            updateDisplay();
+        });
+    </script>
+</body>
+</html>
